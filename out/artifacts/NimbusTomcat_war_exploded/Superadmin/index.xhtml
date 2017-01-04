@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+    <style type="text/css">
+
+    </style>
+</head>
+<center>
+    <br/>
+    Пользователи системы:
+    <br/>
+    <hr/>
+    <h:form>
+        <h:dataTable id="isTable" value="#{userBean.users}" var="user">
+            <h:column>
+                <f:facet name="header">Фамилия</f:facet>
+                <h:outputText value="#{user.lastname}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Имя</f:facet>
+                <h:outputText value="#{user.firstname}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Отчество</f:facet>
+                <h:outputText value="#{user.middleName}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Роль</f:facet>
+                <h:outputText value="#{user.officialPosition}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Имя пользователя</f:facet>
+                <h:outputText value="#{user.login}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Пароль</f:facet>
+                <h:outputText value="#{user.password}"/>
+            </h:column>
+
+            <h:column>
+                <h:commandButton value="Редактировать" action="#{simpleCrudBean.edit(item)}"/>
+            </h:column>
+            <h:column>
+                <h:commandButton value="Удалить" action="#{userBean.deleteUser(user.login)}"/>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+    <hr/>
+    <p:button value="Добавить нового пользователя">
+        <f:param name="productId" value="10"/>
+    </p:button>
+</center>
+</html>
